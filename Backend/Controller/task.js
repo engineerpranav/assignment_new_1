@@ -1,5 +1,7 @@
-import { Task } from "../models/tasks";
-import { User } from "../models/user"
+const { Task } = require("../models/tasks");
+const { User } = require("../models/user");
+
+ 
 
 
 
@@ -23,7 +25,7 @@ const getTaskofuser = async (req, res, next) => {
         })
     }
     catch (err) {
-        return res.status.send({
+        return res.status(200).send({
             success: false,
             message: err.message
         })
@@ -54,7 +56,7 @@ const create_task = async (req, res, next) => {
 
         await user.save();
 
-        return res.status.send({
+        return res.status(201).send({
             success:true,
             message:"task created"
         })

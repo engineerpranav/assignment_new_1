@@ -6,6 +6,7 @@ const { ConnectDataBase } = require("./Models/db");
  
 const cookieParser = require("cookie-parser");
 const { userrouter } = require("./Routes/userRoutes");
+const { taskrouter } = require("./Routes/taskRoutes");
 
 const app=express();
 
@@ -14,6 +15,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api",userrouter);
+app.use("/api",taskrouter);
+
 
 const PORT=3001;
 
