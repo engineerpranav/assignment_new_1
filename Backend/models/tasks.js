@@ -8,25 +8,25 @@ const taskSchema=new mongoose.Schema({
         required:[true,"Please Enter task title"]
     },
     "assignee":{
-        type:String,
-        required:[true,"Please enter assignee name"]
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user"
     },
-    "user":{
-        type:String,
-        required:[true,"please enter user name"]
+    "owner":{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user"
     },
     "sprint":{
         type:String,
         required:[true,"please select sprint"]
     },
-    "status":[{
+    "status":{
         type:String,
         required:[true,"please select task status"]
-    }],
-    "type":[{
-        type:String,
-        required:[true,"please select task type"]
-    }]
+    }
+    // "type":{
+    //     type:String,
+    //     required:[true,"please select task type"]
+    // }
 })
 
 
