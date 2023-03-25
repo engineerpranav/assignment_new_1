@@ -1,10 +1,11 @@
 
 
 const mongoose=require("mongoose");
+const config = require("../Config/config");
 
 const ConnectDataBase=async()=>{
 
-    let result=await mongoose.connect("mongodb://127.0.0.1:27017/Task_Planner");
+    let result=await mongoose.connect(config.DB_CONNECTION_URL);
 
     return result;
 

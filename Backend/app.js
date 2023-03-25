@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 const express=require("express");
 const cors=require("cors");
 
@@ -24,7 +24,7 @@ ConnectDataBase().then(()=>{
 
     app.listen(PORT,()=>{
 
-     console.log(`server is listening at ${PORT}`);
+     console.log(`server is listening at http://localhost:${PORT}`);
        
        })
 

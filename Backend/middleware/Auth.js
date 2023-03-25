@@ -1,13 +1,14 @@
 const jwt=require("jsonwebtoken");
+const config = require("../Config/config");
 const { User } = require("../models/user");
  
 
 const Auth=async(req,res,next)=>{
 
 try{
-    console.log(2)
-
-    const {token}=req.cookies;
+    // const {token}=req.cookies;
+    const {token}=req.headers;
+     
 
     if(!token)  
     {
@@ -16,7 +17,7 @@ try{
         })
     }
 
-    const decoded=await jwt.verify(token,"pranav122");
+    const decoded=jwt.verify(token,config.JWT_SECRET_KEY);
 
     req.user=await User.findById(decoded._id);
 

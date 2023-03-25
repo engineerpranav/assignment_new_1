@@ -1,13 +1,14 @@
  
 const bcrypt=require("bcryptjs");
 const jwt=require("jsonwebtoken");
+const config = require("../Config/config");
 const { User } = require("../models/user");
 
 const Token=(user)=>{
 
     // let {_id,name,email}=user;
 
-   const token=jwt.sign({_id:user._id},"pranav122");
+   const token=jwt.sign({_id:user._id},config.JWT_SECRET_KEY);
 
    return token;
 
@@ -224,6 +225,29 @@ const update_profile=async(req,res,next)=>{
     }
 }
 
+const getallusers=async(req,res,next)=>{
+
+
+    try{
+
+         let users=await User.find();
+
+         return res.status(200).send({
+            success:true,
+            users
+         })
+
+
+    }catch(err){
+        return res.status(500).send({
+            success:false,
+            message:err.message
+        })
+    }
+
+
+}
+
 module.exports={
-    Register,login,logged_out,update_password,update_profile
+    Register,login,logged_out,update_password,update_profile,getallusers
 }
