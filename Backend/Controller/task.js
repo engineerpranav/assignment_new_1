@@ -8,6 +8,7 @@ const { User } = require("../models/user");
 const getTaskofuser = async (req, res, next) => {
 
     try {
+        console.log(1);
         const user = await User.findById(req.user._id);
 
         if (!user) {
@@ -19,13 +20,15 @@ const getTaskofuser = async (req, res, next) => {
 
         const tasks = user.tasks;
 
+        console.log(tasks);
+
         return res.status(200).send({
             success: true,
             tasks
         })
     }
     catch (err) {
-        return res.status(200).send({
+        return res.status(500).send({
             success: false,
             message: err.message
         })
@@ -64,9 +67,9 @@ const create_task = async (req, res, next) => {
         
 
     } catch (err) {
-        return res.status(201).send({
-            success: true,
-            message: "Task created Successfully"
+        return res.status(500).send({
+            success: false,
+            message: err.message
         })
     }
 

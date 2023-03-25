@@ -4,7 +4,7 @@ const baseUrl ="http://localhost:3001/api/"
 export const signup=async(input)=>{
 
     try{
-    let res= await fetch(baseUrl+"signup",{
+    let res= await fetch(baseUrl+"register",{
 
         method:"POST",
         body:JSON.stringify(input),
@@ -16,7 +16,7 @@ export const signup=async(input)=>{
     });
 
     let data=await res.json();
-
+     console.log(data);
     return data;
     
     }catch(err){

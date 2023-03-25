@@ -16,8 +16,14 @@ const userSchema=new mongoose.Schema({
         required:[true,"please enter your password"]
     },
     "tasks":[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"task"
+        // type:mongoose.Schema.Types.ObjectId,
+        // ref:"task"
+        "title":String,
+        "assignee":String,
+        "owner":String,
+        "sprint":String,
+        "status":String,
+
     }]
 
 

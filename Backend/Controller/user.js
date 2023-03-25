@@ -40,10 +40,10 @@ const Register=async(req,res,next)=>{
 
     const token=Token(user);
 
-    let options={expires:new Date(Date.now()+90*24*60*60*1000),httpOnly:true};
+    let options={expires:new Date(Date.now()+90*24*60*60*1000),httpOnly:true,sameSite:"none", secure:true};
     
 
-    return res.status(201).cookie("token",token,options).send({
+    return res.cookie("token",token,options).status(201).send({
         success:true,
         message:"Registration Successful",
         token,
@@ -97,6 +97,8 @@ const login=async(req,res,next)=>{
     const token=Token(user);
 
     let options={expires:new Date(Date.now()+90*24*60*60*1000),httpOnly:true};
+
+    
     
 
     return res.status(201).cookie("token",token,options).send({
