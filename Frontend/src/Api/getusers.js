@@ -1,12 +1,12 @@
-
 const Base_url="https://tiny-erin-barracuda-wrap.cyclic.app/"
 
-export const getTask=async()=>{
+
+export const getUsers=async()=>{
 
 
     try{
 
-        let res=await fetch(Base_url+"getusertask",{
+        let res=await fetch(Base_url+"getallusers",{
             method:"GET",
             headers:{
                 token:localStorage.getItem("token")

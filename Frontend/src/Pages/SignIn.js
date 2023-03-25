@@ -2,15 +2,22 @@ import React from 'react'
 import { useState } from 'react'
 import { signup } from '../Api/authentication';
 import { Box, Button, FormControl, FormHelperText, FormLabel, Input, Text } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login_and_signup_state_Action } from '../Redux/action';
 
 
 function SignIn() {
+
+  let navigate=useNavigate();
+  let dispatch=useDispatch();
 
     const [formData,setFormData]=useState({
         name:"",
         email:"",
         password:""
     })
+
 
 
     const handleForm=(event)=>{
@@ -20,11 +27,17 @@ function SignIn() {
          signup(formData).then((res)=>{
 
           if(res.user){
+
+            localStorage.setItem("token",res.token);    
+
             alert("signup Successfull")
+            navigate("/task")
+
+
           }
           else{
             console.log(res.message);
-            alert("email id already exist")
+            alert(res.message)
           }
 
 
@@ -64,7 +77,11 @@ function SignIn() {
 
         <hr />
 
-        <Button m="5" p="5" colorScheme=" #42b72a" bg="#42b72a" >Already an account ?</Button>
+        <Button m="5" p="5" colorScheme=" #42b72a" bg="#42b72a" onClick={()=>{
+
+               login_and_signup_state_Action(true,dispatch);
+
+        }} >Already an account ?</Button>
 
 
       </FormControl>

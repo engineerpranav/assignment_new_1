@@ -1,4 +1,4 @@
-const baseUrl ="http://localhost:3001/api/"
+const baseUrl ="https://tiny-erin-barracuda-wrap.cyclic.app/api/"
 
 
 export const signup=async(input)=>{
@@ -39,6 +39,28 @@ export const login=async(input)=>{
             "Content-Type":"application/json"
         }
 
+    });
+
+    let data=await res.json();
+
+    return data;
+    
+    }catch(err){
+
+       console.log(err);
+
+    }
+
+
+
+}
+export const logout=async()=>{
+
+    try{
+    let res= await fetch(baseUrl+"logout",{
+
+        method:"GET",
+    
     });
 
     let data=await res.json();

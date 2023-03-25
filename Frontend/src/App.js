@@ -9,10 +9,9 @@ function App() {
   return (
     <div className="App">
 
-     <Navbar/>
-     <Task/>
-     <Home/>
+      <AllRoutes/>
 
+      
     </div>
   );
 }
