@@ -1,9 +1,6 @@
 const { Task } = require("../models/tasks");
 const { User } = require("../models/user");
 
- 
-
-
 
 const getTaskofuser = async (req, res, next) => {
 

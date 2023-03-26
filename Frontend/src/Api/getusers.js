@@ -1,4 +1,4 @@
-const Base_url="https://tiny-erin-barracuda-wrap.cyclic.app/"
+const Base_url="https://tiny-erin-barracuda-wrap.cyclic.app/api/"
 
 
 export const getUsers=async()=>{

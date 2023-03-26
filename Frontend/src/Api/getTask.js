@@ -1,5 +1,5 @@
 
-const Base_url="https://tiny-erin-barracuda-wrap.cyclic.app/"
+const Base_url="https://tiny-erin-barracuda-wrap.cyclic.app/api/"
 
 export const getTask=async()=>{
 
@@ -14,6 +14,7 @@ export const getTask=async()=>{
         })
 
         let tasks=await res.json();
+        
 
         return tasks;
 
